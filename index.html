@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flamingo Rover Scouts – Weather App</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#3A7D44">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="application-name" content="Flamingo Weather">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <div class="bg-blobs">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+  </div>
+
+  <div class="container">
+
+    <!-- 2026 Theme Banner -->
+    <div class="theme-banner">
+      <span class="theme-year">Kenya Scouts Association 2026</span>
+      <span class="theme-divider">·</span>
+      <span class="theme-text">🕊️ Empowering young people to promote dialogue and peaceful communities</span>
+    </div>
+
+    <header class="app-header">
+      <img src="flamingo_logo.jpeg" alt="Flamingo Rover Scouts Logo" class="logo-img">
+      <h1 class="logo-title">Flamingo Rover Scouts</h1>
+      <p class="logo-subtitle">Kisii University · Weather Station</p>
+      <div class="scout-motto">
+        <span class="motto-label">✊ Today's Motto</span>
+        <span class="motto-text" id="daily-motto">Be Prepared</span>
+      </div>
+    </header>
+
+    <!-- Today's Peace Challenge -->
+    <div class="peace-challenge-card">
+      <div class="peace-challenge-header">
+        <span class="peace-icon">🕊️</span>
+        <div>
+          <div class="peace-challenge-label">Today's Peace Challenge</div>
+          <div class="peace-challenge-sub">Kenya Scouts 2026 · Daily Mission</div>
+        </div>
+      </div>
+      <div class="peace-challenge-text" id="peace-challenge">Loading today's challenge…</div>
+    </div>
+
+    <!-- Search -->
+    <div class="search-wrapper">
+      <div class="search-tabs">
+        <button class="search-tab active" id="tab-dropdown">🗺️ Browse Towns</button>
+        <button class="search-tab" id="tab-text">🔍 Type City</button>
+      </div>
+
+      <!-- Dropdown search -->
+      <div id="search-dropdown-panel">
+        <div class="dropdown-row">
+          <div class="dropdown-group">
+            <label class="dropdown-label">County / City</label>
+            <select id="county-select">
+              <option value="">— Select County —</option>
+            </select>
+          </div>
+          <div class="dropdown-group">
+            <label class="dropdown-label">Town / Area</label>
+            <select id="town-select" disabled>
+              <option value="">— Select Town —</option>
+            </select>
+          </div>
+          <button id="dropdown-search-btn" class="drop-search-btn" disabled>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="18" height="18"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Text search -->
+      <div id="search-text-panel" class="hidden">
+        <div class="search-bar">
+          <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+          </svg>
+          <input type="text" id="city-input" placeholder="Search any city worldwide…" spellcheck="false" autocomplete="off">
+          <button id="search-btn">
+            <span>Search</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="16" height="16">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <a href="dashboard.html" class="dashboard-btn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+        <rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/>
+        <rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/>
+      </svg>
+      <span>Open Weather Dashboard</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="15" height="15">
+        <path d="M5 12h14M12 5l7 7-7 7"/>
+      </svg>
+    </a>
+
+    <div id="weather-result" class="weather-result"></div>
+
+    <div id="error-msg" class="error-msg hidden">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22">
+        <circle cx="12" cy="12" r="10"/><path d="M12 8v4m0 4h.01"/>
+      </svg>
+      <span id="error-text">City not found. Please try again.</span>
+    </div>
+
+    <div id="loading" class="loading hidden">
+      <div class="spinner"></div>
+      <p>Scouting the weather…</p>
+    </div>
+
+    <footer class="app-footer">
+      <span>🏕️ Flamingo Rover Scouts · Kisii University · Service Above Self</span>
+      <span class="footer-theme">🕊️ Empowering Young People · Promoting Peaceful Communities · 2026</span>
+    </footer>
+
+  </div>
+
+  <!-- PWA Install Button -->
+  <div id="install-banner" class="install-banner hidden">
+    <div class="install-banner-text">
+      <span>📲</span>
+      <div>
+        <div class="install-banner-title">Install Flamingo Weather</div>
+        <div class="install-banner-sub">Add to your home screen for quick access</div>
+      </div>
+    </div>
+    <div class="install-banner-actions">
+      <button id="install-btn" class="install-btn">Install</button>
+      <button id="dismiss-btn" class="dismiss-btn">✕</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    // Register Service Worker
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js')
+          .then(reg => console.log('✅ Flamingo SW registered:', reg.scope))
+          .catch(err => console.log('❌ SW error:', err));
+      });
+    }
+
+    // PWA Install prompt
+    let deferredPrompt;
+    const installBanner = document.getElementById('install-banner');
+    const installBtn    = document.getElementById('install-btn');
+    const dismissBtn    = document.getElementById('dismiss-btn');
+
+    window.addEventListener('beforeinstallprompt', e => {
+      e.preventDefault();
+      deferredPrompt = e;
+      installBanner.classList.remove('hidden');
+    });
+
+    installBtn.addEventListener('click', async () => {
+      if (!deferredPrompt) return;
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      if (outcome === 'accepted') {
+        installBanner.classList.add('hidden');
+      }
+      deferredPrompt = null;
+    });
+
+    dismissBtn.addEventListener('click', () => {
+      installBanner.classList.add('hidden');
+    });
+
+    window.addEventListener('appinstalled', () => {
+      installBanner.classList.add('hidden');
+      deferredPrompt = null;
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flamingo Rover Scouts – Offline</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: #0F1A10;
+      color: #EEF5EE;
+      min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      padding: 2rem;
+      position: relative; overflow: hidden;
+    }
+    .bg {
+      position: fixed; inset: 0; z-index: 0;
+      background: url('weather.jpeg') center center / cover no-repeat;
+      opacity: 0.15;
+    }
+    .card {
+      position: relative; z-index: 1;
+      background: rgba(26, 43, 28, 0.92);
+      border: 1.5px solid rgba(90, 163, 104, 0.3);
+      border-radius: 28px; padding: 2.5rem 2rem;
+      max-width: 440px; width: 100%;
+      text-align: center; box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+    }
+    .logo { width: 80px; height: 80px; object-fit: contain; border-radius: 12px; margin-bottom: 1.2rem; }
+    .title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem; font-weight: 600; color: #7AE08A;
+      margin-bottom: 0.4rem;
+    }
+    .subtitle { font-size: 0.82rem; color: #7AAB82; margin-bottom: 1.8rem; font-weight: 300; }
+    .offline-icon { font-size: 3.5rem; margin-bottom: 1.2rem; display: block; }
+    .offline-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem; color: #EEF5EE; margin-bottom: 0.6rem;
+    }
+    .offline-msg {
+      font-size: 0.88rem; color: #7AAB82; font-weight: 300;
+      line-height: 1.6; margin-bottom: 1.5rem;
+    }
+    .last-weather {
+      background: rgba(58,125,68,0.15);
+      border: 1px solid rgba(58,125,68,0.25);
+      border-radius: 16px; padding: 1rem;
+      margin-bottom: 1.5rem; text-align: left;
+    }
+    .last-weather-label {
+      font-size: 0.7rem; color: #7AAB82; text-transform: uppercase;
+      letter-spacing: 0.5px; font-weight: 500; margin-bottom: 0.5rem;
+    }
+    .last-weather-content { font-size: 0.88rem; color: #EEF5EE; line-height: 1.6; }
+    .retry-btn {
+      background: linear-gradient(135deg, #3A7D44, #5BA368);
+      color: white; border: none; border-radius: 30px;
+      padding: 12px 28px; font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem; font-weight: 500; cursor: pointer;
+      transition: opacity 0.2s; margin-bottom: 1rem; width: 100%;
+    }
+    .retry-btn:hover { opacity: 0.88; }
+    .peace-msg {
+      font-size: 0.78rem; color: #7AAB82; font-style: italic;
+      font-weight: 300; line-height: 1.5;
+      border-top: 1px solid rgba(90,163,104,0.2); padding-top: 1rem; margin-top: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="bg"></div>
+  <div class="card">
+    <img src="flamingo_logo.jpeg" alt="Flamingo Rover Scouts" class="logo">
+    <div class="title">Flamingo Rover Scouts</div>
+    <div class="subtitle">Kisii University · Weather Station</div>
+
+    <span class="offline-icon">📡</span>
+    <div class="offline-title">You're Offline</div>
+    <div class="offline-msg">
+      No internet connection detected. Connect to a network to get live weather data for your patrol.
+    </div>
+
+    <div class="last-weather" id="last-weather-box">
+      <div class="last-weather-label">📍 Last Known Weather</div>
+      <div class="last-weather-content" id="last-weather-content">
+        No recent weather data saved yet. Search a city when online to cache weather data.
+      </div>
+    </div>
+
+    <button class="retry-btn" onclick="window.location.href='index.html'">
+      🔄 Try Again
+    </button>
+
+    <div class="peace-msg">
+      🕊️ "Empowering young people to promote dialogue and peaceful communities"<br>
+      — Kenya Scouts Association 2026
+    </div>
+  </div>
+
+  <script>
+    // Show last cached weather from localStorage
+    const last = localStorage.getItem('flamingo_last_weather');
+    if (last) {
+      try {
+        const d = JSON.parse(last);
+        document.getElementById('last-weather-content').innerHTML = `
+          <strong>${d.location}</strong><br>
+          🌡️ ${d.temp}°C — ${d.description}<br>
+          💧 Humidity: ${d.humidity}% &nbsp; 🌬️ Wind: ${d.wind} km/h<br>
+          🕐 Last updated: ${d.time}
+        `;
+      } catch(e) {}
+    }
+  </script>
+</body>
+</html>
