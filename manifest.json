@@ -2,12 +2,12 @@
   "name": "Flamingo Rover Scouts Weather App",
   "short_name": "Flamingo Weather",
   "description": "Real-time weather app for Kisii University Flamingo Rover Scouts — KSA 2026 theme: Empowering young people to promote dialogue and peaceful communities.",
-  "start_url": "/index.html",
+  "start_url": "./",
   "display": "standalone",
   "background_color": "#0F1A10",
   "theme_color": "#3A7D44",
   "orientation": "portrait-primary",
-  "scope": "/",
+  "scope": "./",
   "lang": "en",
   "icons": [
     {
