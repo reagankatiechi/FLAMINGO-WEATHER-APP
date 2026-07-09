@@ -10,6 +10,7 @@
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="application-name" content="Flamingo Weather">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="icon" href="flamingo_logo.jpeg" type="image/jpeg">
 </head>
 <body>
 
@@ -169,35 +170,11 @@
       <button id="dismiss-btn" class="dismiss-btn">✕</button>
     </div>
   </div>
+  <div id="update-banner" class="hidden">
+    <span> A new version of Flamingo Weather is available.</span>
+    <button id="update-btn">Update</button>
+</div>
 
   <script src="script.js"></script>
-  <script>
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/sw.js')
-          .then(reg => console.log('✅ Flamingo SW registered:', reg.scope))
-          .catch(err => console.log('❌ SW error:', err));
-      });
-    }
-    let deferredPrompt;
-    const installBanner = document.getElementById('install-banner');
-    const installBtn    = document.getElementById('install-btn');
-    const dismissBtn    = document.getElementById('dismiss-btn');
-    window.addEventListener('beforeinstallprompt', e => {
-      e.preventDefault(); deferredPrompt = e;
-      installBanner.classList.remove('hidden');
-    });
-    installBtn.addEventListener('click', async () => {
-      if (!deferredPrompt) return;
-      deferredPrompt.prompt();
-      const { outcome } = await deferredPrompt.userChoice;
-      if (outcome === 'accepted') installBanner.classList.add('hidden');
-      deferredPrompt = null;
-    });
-    dismissBtn.addEventListener('click', () => installBanner.classList.add('hidden'));
-    window.addEventListener('appinstalled', () => {
-      installBanner.classList.add('hidden'); deferredPrompt = null;
-    });
-  </script>
 </body>
 </html>

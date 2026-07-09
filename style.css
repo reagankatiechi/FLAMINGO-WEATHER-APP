@@ -547,3 +547,33 @@ body {
   #search-btn { padding: 8px 12px; }
   #search-btn svg { display: block !important; }
 }
+#update-banner{
+    position:fixed;
+    bottom:20px;
+    left:50%;
+    transform:translateX(-50%);
+    background:#2e7d32;
+    color:white;
+    padding:15px 22px;
+    border-radius:15px;
+    display:flex;
+    gap:15px;
+    align-items:center;
+    z-index:99999;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.25);
+}
+
+#update-banner.hidden{
+    display:none;
+}
+
+#update-btn{
+    background:white;
+    color:#2e7d32;
+    border:none;
+    padding:8px 18px;
+    border-radius:8px;
+    cursor:pointer;
+    font-weight:bold;
+}
