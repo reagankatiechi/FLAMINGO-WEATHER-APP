@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flamingo Rover Scouts – Live Chat</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="chat.css">
+</head>
+<body>
+
+  <!-- Join Screen -->
+  <div class="join-screen" id="join-screen">
+    <div class="join-card">
+      <img src="flamingo_logo.jpeg" alt="Flamingo Rover Scouts" class="join-logo">
+      <h1 class="join-title">Flamingo Rover Scouts</h1>
+      <p class="join-sub">Live Scout Chat Room</p>
+      <div class="join-theme">🕊️ KSA 2026 — Promoting Dialogue & Peaceful Communities</div>
+      <div class="join-form">
+        <div class="form-group">
+          <label>Your Name</label>
+          <input type="text" id="join-name" placeholder="e.g. Reagan Katiechi" maxlength="50">
+        </div>
+        <div class="form-group">
+          <label>Your County</label>
+          <select id="join-county">
+            <option value="">— Select your county —</option>
+          </select>
+        </div>
+        <button class="join-btn" id="join-btn">
+          💬 Join Chat Room
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Chat Room -->
+  <div class="chat-room hidden" id="chat-room">
+
+    <!-- Header -->
+    <div class="chat-header">
+      <div class="chat-header-left">
+        <img src="flamingo_logo.jpeg" alt="logo" class="chat-logo">
+        <div>
+          <div class="chat-title">Flamingo Scouts — Live Chat</div>
+          <div class="chat-sub">
+            <span class="online-dot"></span>
+            <span id="online-status">Live</span>
+            &nbsp;·&nbsp; <span id="user-display"></span>
+          </div>
+        </div>
+      </div>
+      <div class="chat-header-right">
+        <a href="index.html" class="back-btn">← Home</a>
+        <button class="leave-btn" id="leave-btn">Leave</button>
+      </div>
+    </div>
+
+    <!-- Nav -->
+    <div class="chat-nav">
+      <a href="index.html" class="nav-item"> Home</a>
+      <a href="dashboard.html" class="nav-item"> Dashboard</a>
+      <a href="alerts.html" class="nav-item"> Alerts</a>
+      <a href="pledge.html" class="nav-item"> Pledges</a>
+      <a href="chat.html" class="nav-item active"> Chat</a>
+    </div>
+
+    <!-- Messages -->
+    <div class="messages-wrap">
+      <div class="messages-list" id="messages-list">
+        <div class="chat-welcome">
+          <div class="chat-welcome-icon">🕊️</div>
+          <div class="chat-welcome-title">Welcome to the Flamingo Scout Chat Room!</div>
+          <div class="chat-welcome-sub">A safe space for dialogue, coordination and community building. Be respectful and kind.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Input -->
+    <div class="chat-input-wrap">
+      <div class="chat-input-bar">
+        <input type="text" id="msg-input" placeholder="Type your message… (press Enter to send)" maxlength="500" autocomplete="off">
+        <span class="msg-char" id="msg-char">0/500</span>
+        <button class="send-btn" id="send-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="18" height="18"><path d="M22 2L11 13"/><path d="M22 2L15 22 11 13 2 9l20-7z"/></svg>
+        </button>
+      </div>
+      <div class="chat-input-hint"> KSA 2026 — Promote dialogue and peaceful communities in every message</div>
+    </div>
+
+  </div>
+
+  <script src="chat.js"></script>
+</body>
+</html>
