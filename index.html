@@ -5,9 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Flamingo Rover Scouts – Weather App</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="assistant.css">
   <link rel="manifest" href="manifest.json">
   <meta name="theme-color" content="#3A7D44">
-  <link rel="icon" href="favicon.jpeg" type="image/jpeg">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="application-name" content="Flamingo Weather">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
@@ -52,6 +52,9 @@
       <a href="chat.html" class="drawer-item">
         <span class="drawer-icon"></span> Live Scout Chat
       </a>
+      <a href="quiz.html" class="drawer-item">
+        <span class="drawer-icon"></span> Peace Quiz Challenge
+      </a>
     </nav>
     <div class="drawer-footer">
       <a href="https://flamingo.scouts.lance.co.ke" target="_blank" class="drawer-join-btn">
@@ -62,12 +65,17 @@
   </div>
 
   <div class="container">
-    <!-- Top Navigation -->
-<div class="top-nav">
-    <button id="hamburger-btn" class="hamburger-btn">
-        ☰
-    </button>
-</div>
+
+    <!-- Top nav bar -->
+    <div class="top-nav">
+      <button class="hamburger-btn" id="hamburger-btn">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="top-nav-brand"> Flamingo Rover Scouts</div>
+      <a href="https://flamingo.scouts.lance.co.ke" target="_blank" rel="noopener noreferrer" class="join-us-btn">
+        Join Us →
+      </a>
+    </div>
 
     <!-- 2026 Theme Banner -->
     <div class="theme-banner">
@@ -89,7 +97,7 @@
     <!-- Today's Peace Challenge -->
     <div class="peace-challenge-card">
       <div class="peace-challenge-header">
-        <span class="peace-icon">🕊️</span>
+        <span class="peace-icon"></span>
         <div>
           <div class="peace-challenge-label">Today's Peace Challenge</div>
           <div class="peace-challenge-sub">Kenya Scouts 2026 · Daily Mission</div>
@@ -101,8 +109,8 @@
     <!-- Search -->
     <div class="search-wrapper">
       <div class="search-tabs">
-        <button class="search-tab active" id="tab-dropdown"> Browse Towns</button>
-        <button class="search-tab" id="tab-text"> Search City</button>
+        <button class="search-tab active" id="tab-dropdown">🗺️ Browse Towns</button>
+        <button class="search-tab" id="tab-text">🔍 Search City</button>
       </div>
 
       <div id="search-dropdown-panel">
@@ -157,7 +165,7 @@
 
     <footer class="app-footer">
       <span> Flamingo Rover Scouts · Kisii University · Service Above Self</span>
-      <span class="footer-theme">🕊️ Empowering Young People · Promoting Peaceful Communities · 2026</span>
+      <span class="footer-theme"> Empowering Young People · Promoting Peaceful Communities · 2026</span>
     </footer>
 
   </div>
@@ -165,7 +173,7 @@
   <!-- PWA Install Banner -->
   <div id="install-banner" class="install-banner hidden">
     <div class="install-banner-text">
-      <span>📲</span>
+      <span></span>
       <div>
         <div class="install-banner-title">Install Flamingo Weather</div>
         <div class="install-banner-sub">Add to your home screen for quick access</div>
@@ -230,5 +238,6 @@
       installBanner.classList.add('hidden'); deferredPrompt = null;
     });
   </script>
+  <script src="assistant.js"></script>
 </body>
 </html>

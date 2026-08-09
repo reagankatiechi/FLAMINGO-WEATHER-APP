@@ -41,6 +41,10 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
         Live Scout Chat
       </a>
+      <a href="quiz.html" class="nav-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        Peace Quiz
+      </a>
     </nav>
 
     <!-- Details panel populated by JS -->
@@ -70,7 +74,7 @@
 
     <div class="topbar">
       <div class="topbar-left">
-        <div class="dash-theme-tag"> KSA 2026 — Empowering Young People · Promoting Peaceful Communities</div>
+        <div class="dash-theme-tag">🕊️ KSA 2026 — Empowering Young People · Promoting Peaceful Communities</div>
         <h1 class="dash-title">Dashboard: <span id="dash-city-name">–</span></h1>
       </div>
       <div class="topbar-right">
@@ -90,7 +94,7 @@
     <!-- Map layer tabs -->
     <div class="map-tabs">
       <button class="map-tab active" data-layer="temp_new"> Temperature</button>
-      <button class="map-tab" data-layer="precipitation_new"> Precipitation</button>
+      <button class="map-tab" data-layer="precipitation_new">🌧️ Precipitation</button>
       <button class="map-tab" data-layer="pressure_new"> Pressure</button>
       <button class="map-tab" data-layer="wind_new"> Wind Speed</button>
       <button class="map-tab" data-layer="clouds_new"> Clouds</button>
@@ -110,7 +114,7 @@
     <!-- Peace & Community Panel -->
     <div class="peace-panel" id="peace-panel" style="display:none">
       <div class="peace-panel-header">
-        <span>🕊️</span>
+        <span></span>
         <div>
           <div class="peace-panel-title">Community Peace Index</div>
           <div class="peace-panel-sub">Kenya Scouts 2026 — Promoting Peaceful Communities</div>
@@ -150,5 +154,6 @@
 
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script src="dashboard.js"></script>
+  <script src="assistant.js"></script>
 </body>
 </html>

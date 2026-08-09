@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flamingo Rover Scouts – Peace Quiz Challenge</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assistant.css">
+  <link rel="stylesheet" href="quiz.css">
+</head>
+<body>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <img src="flamingo_logo.jpeg" alt="Flamingo Rover Scouts">
+      <div>
+        <div class="sidebar-title">Flamingo Rover Scouts</div>
+        <div class="sidebar-sub">Kisii University</div>
+      </div>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="index.html" class="nav-item">🏠 Home</a>
+      <a href="dashboard.html" class="nav-item">📊 Dashboard</a>
+      <a href="alerts.html" class="nav-item">⚠️ Alerts</a>
+      <a href="pledge.html" class="nav-item">🕊️ Peace Pledges</a>
+      <a href="chat.html" class="nav-item">💬 Live Chat</a>
+      <a href="quiz.html" class="nav-item active">🎯 Peace Quiz</a>
+    </nav>
+    <div class="sidebar-stats">
+      <div class="stat-item">
+        <div class="stat-value" id="sb-high-score">0</div>
+        <div class="stat-label">Best Score</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-value green" id="sb-games">0</div>
+        <div class="stat-label">Games Played</div>
+      </div>
+    </div>
+    <div class="sidebar-theme">
+      <span>🕊️</span>
+      <span>KSA 2026 — Empowering young people to promote dialogue and peaceful communities</span>
+    </div>
+    <div class="sidebar-footer">🏕️ Service Above Self</div>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main">
+
+    <!-- Topbar -->
+    <div class="topbar">
+      <div>
+        <div class="dash-theme-tag">🕊️ KSA 2026 — Test Your Peace & Scout Knowledge</div>
+        <h1 class="dash-title">🎯 Peace Quiz <span>Challenge</span></h1>
+      </div>
+      <div class="topbar-badges" id="topbar-badges"></div>
+    </div>
+
+    <!-- SCREEN 1: Welcome -->
+    <div class="quiz-screen" id="screen-welcome">
+      <div class="welcome-card">
+        <div class="welcome-hero">
+          <div class="welcome-icon">🎯</div>
+          <h2 class="welcome-title">Peace Quiz Challenge</h2>
+          <p class="welcome-sub">Test your knowledge on KSA 2026, scouting values and Kenyan history. Earn badges and climb the leaderboard!</p>
+        </div>
+        <div class="welcome-info-grid">
+          <div class="info-card">
+            <div class="info-icon">❓</div>
+            <div class="info-label">Questions</div>
+            <div class="info-value">15</div>
+          </div>
+          <div class="info-card">
+            <div class="info-icon">⏱️</div>
+            <div class="info-label">Per Question</div>
+            <div class="info-value">20s</div>
+          </div>
+          <div class="info-card">
+            <div class="info-icon">🏆</div>
+            <div class="info-label">Max Score</div>
+            <div class="info-value">150</div>
+          </div>
+          <div class="info-card">
+            <div class="info-icon">🎖️</div>
+            <div class="info-label">Badges</div>
+            <div class="info-value">5</div>
+          </div>
+        </div>
+        <div class="topic-tags">
+          <span class="topic-tag">🕊️ KSA 2026</span>
+          <span class="topic-tag">🏕️ Scouting</span>
+          <span class="topic-tag">🇰🇪 Kenya History</span>
+          <span class="topic-tag">🌍 Peace & Dialogue</span>
+        </div>
+        <div class="player-form">
+          <div class="form-group">
+            <label>Your Scout Name</label>
+            <input type="text" id="player-name" placeholder="e.g. Reagan Katiechi" maxlength="50">
+          </div>
+          <div class="form-group">
+            <label>Your County</label>
+            <select id="player-county">
+              <option value="">— Select County —</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Your Rover Crew</label>
+            <select id="player-crew" disabled>
+              <option value="">— Select County first —</option>
+            </select>
+          </div>
+          <div class="crew-info-card hidden" id="crew-info-card">
+            <div class="crew-info-icon" id="crew-info-icon">🦩</div>
+            <div>
+              <div class="crew-info-name" id="crew-info-name">Flamingo Rover Crew</div>
+              <div class="crew-info-detail" id="crew-info-detail">Kisii University · Est. 2010</div>
+            </div>
+          </div>
+        </div>
+        <button class="start-btn" id="start-btn">
+          🎯 Start Quiz Challenge
+        </button>
+        <button class="leaderboard-btn" id="view-leaderboard-btn">
+          🏆 View Leaderboard
+        </button>
+      </div>
+    </div>
+
+    <!-- SCREEN 2: Quiz -->
+    <div class="quiz-screen hidden" id="screen-quiz">
+      <div class="quiz-card">
+        <div class="quiz-top-bar">
+          <div class="quiz-progress-wrap">
+            <div class="quiz-progress-text">Question <span id="q-current">1</span> of 15</div>
+            <div class="quiz-progress-bar">
+              <div class="quiz-progress-fill" id="q-progress-fill"></div>
+            </div>
+          </div>
+          <div class="quiz-score-wrap">
+            <span class="quiz-score-label">Score</span>
+            <span class="quiz-score-val" id="q-score">0</span>
+          </div>
+          <div class="quiz-timer-wrap">
+            <div class="quiz-timer" id="q-timer">20</div>
+            <div class="quiz-timer-bar">
+              <div class="quiz-timer-fill" id="q-timer-fill"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="quiz-category" id="q-category">🕊️ KSA 2026</div>
+        <div class="quiz-question" id="q-question">Loading question…</div>
+
+        <div class="quiz-options" id="q-options"></div>
+
+        <div class="quiz-feedback hidden" id="q-feedback">
+          <div class="feedback-icon" id="feedback-icon">✅</div>
+          <div class="feedback-text" id="feedback-text"></div>
+          <div class="feedback-explanation" id="feedback-explanation"></div>
+        </div>
+
+        <button class="next-btn hidden" id="next-btn">
+          Next Question →
+        </button>
+      </div>
+    </div>
+
+    <!-- SCREEN 3: Results -->
+    <div class="quiz-screen hidden" id="screen-results">
+      <div class="results-card">
+        <div class="results-icon" id="results-icon">🏆</div>
+        <h2 class="results-title" id="results-title">Quiz Complete!</h2>
+        <div class="results-score-wrap">
+          <div class="results-score" id="results-score">0</div>
+          <div class="results-score-max">/ 150</div>
+        </div>
+        <div class="results-player" id="results-player"></div>
+        <div class="results-stats">
+          <div class="result-stat">
+            <div class="result-stat-val" id="res-correct">0</div>
+            <div class="result-stat-label">✅ Correct</div>
+          </div>
+          <div class="result-stat">
+            <div class="result-stat-val" id="res-wrong">0</div>
+            <div class="result-stat-label">❌ Wrong</div>
+          </div>
+          <div class="result-stat">
+            <div class="result-stat-val" id="res-accuracy">0%</div>
+            <div class="result-stat-label">🎯 Accuracy</div>
+          </div>
+        </div>
+
+        <!-- Badge earned -->
+        <div class="badge-earned hidden" id="badge-earned">
+          <div class="badge-earned-icon" id="badge-icon">🥉</div>
+          <div class="badge-earned-title" id="badge-title">Peace Cadet</div>
+          <div class="badge-earned-sub" id="badge-sub">Badge earned!</div>
+        </div>
+
+        <!-- Review wrong answers -->
+        <div class="review-section" id="review-section"></div>
+
+        <div class="results-actions">
+          <button class="restart-btn" id="restart-btn">🔄 Play Again</button>
+          <button class="leaderboard-btn" id="results-leaderboard-btn">🏆 Leaderboard</button>
+        </div>
+
+        <!-- Certificate & Download/Print -->
+        <div class="cert-actions">
+          <button class="cert-btn download-btn" id="download-cert-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download Certificate
+          </button>
+          <button class="cert-btn print-btn" id="print-cert-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+            Print Certificate
+          </button>
+        </div>
+
+        <!-- Hidden Certificate (for print/download) -->
+        <div id="certificate-wrap" class="hidden">
+          <div id="certificate">
+            <div class="cert-border">
+              <div class="cert-header">
+                <img src="flamingo_logo.jpeg" alt="Flamingo Rover Scouts" class="cert-logo">
+                <div class="cert-org">Flamingo Rover Scouts · Kisii University</div>
+                <div class="cert-ksa">Kenya Scouts Association · 2026</div>
+              </div>
+              <div class="cert-body">
+                <div class="cert-presents">This is to certify that</div>
+                <div class="cert-name" id="cert-name">Scout Name</div>
+                <div class="cert-crew-county" id="cert-crew-county">Flamingo Rover Crew · Kisii County</div>
+                <div class="cert-presents">has successfully completed the</div>
+                <div class="cert-quiz-title">Peace Quiz Challenge</div>
+                <div class="cert-theme">KSA 2026 — "Empowering young people to promote dialogue and peaceful communities"</div>
+                <div class="cert-score-wrap">
+                  <div class="cert-score-box">
+                    <div class="cert-score-val" id="cert-score">0</div>
+                    <div class="cert-score-label">Score / 150</div>
+                  </div>
+                  <div class="cert-score-box">
+                    <div class="cert-score-val" id="cert-accuracy">0%</div>
+                    <div class="cert-score-label">Accuracy</div>
+                  </div>
+                  <div class="cert-score-box">
+                    <div class="cert-score-val" id="cert-correct">0</div>
+                    <div class="cert-score-label">Correct / 15</div>
+                  </div>
+                </div>
+                <div class="cert-badge-wrap">
+                  <div class="cert-badge-icon" id="cert-badge-icon">🏆</div>
+                  <div class="cert-badge-name" id="cert-badge-name">Peace Ambassador</div>
+                </div>
+              </div>
+              <div class="cert-footer">
+                <div class="cert-sig-wrap">
+                  <div class="cert-sig-line"></div>
+                  <div class="cert-sig-name">Flamingo Rover Scout Leader</div>
+                  <div class="cert-sig-title">Kisii University Scout Unit</div>
+                </div>
+                <div class="cert-sig-wrap">
+                  <div class="cert-sig-line"></div>
+                  <div class="cert-sig-name">Kenya Scouts Association</div>
+                  <div class="cert-sig-title">KSA 2026 Peace Programme</div>
+                </div>
+              </div>
+              <div class="cert-date" id="cert-date"></div>
+              <div class="cert-motto">🕊️ Service Above Self · Be Prepared · Do a Good Turn Daily</div>
+            </div>
+          </div>
+        </div>
+
+    <!-- SCREEN 4: Leaderboard -->
+    <div class="quiz-screen hidden" id="screen-leaderboard">
+      <div class="leaderboard-card">
+        <h2 class="lb-title">🏆 Peace Quiz Leaderboard</h2>
+        <p class="lb-sub">Top scouts ranked by score</p>
+        <div class="lb-list" id="lb-list"></div>
+        <button class="back-btn-lb" id="back-from-lb">← Back to Quiz</button>
+      </div>
+    </div>
+
+  </main>
+
+  <script src="assistant.js"></script>
+  <script src="quiz.js"></script>
+</body>
+</html>
