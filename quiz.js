@@ -148,7 +148,7 @@ document.getElementById('player-county').addEventListener('change', function() {
   crews.forEach(c => {
     const opt = document.createElement('option');
     opt.value = JSON.stringify(c);
-    opt.textContent = `${c.icon} ${c.name}`;
+    opt.textContent = c.name;
     crewSel.appendChild(opt);
   });
   crewSel.disabled = false;
@@ -167,7 +167,7 @@ document.getElementById('player-crew').addEventListener('change', function() {
 });
 
 function showCrewInfo(crew) {
-  document.getElementById('crew-info-icon').textContent   = crew.icon;
+  document.getElementById('crew-info-icon').textContent   = '🏕️';
   document.getElementById('crew-info-name').textContent   = crew.name;
   document.getElementById('crew-info-detail').textContent = crew.detail;
   document.getElementById('crew-info-card').classList.remove('hidden');
